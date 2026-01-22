@@ -1,0 +1,725 @@
+#########################
+Day 16 : 7th Sep. 2025
+#########################
+
+	- Introduction - Containerization using Docker!
+	
+	- Micro-Service based application Build & Deployments :
+	
+		- Docker/Kubernetes!
+		
+		
+	What is Containerization ???
+	
+	- Containerization ::::
+	
+		- It is a process of packaging the application along with its dependencies.
+		
+		
+	- Virtual Machines ::
+	
+		- VMs are called as Hardware Level Virtualization
+		- VMs are created using Hypervisors
+		- VMS are used to run the Operating System
+		- VMs will continue to run even if there is no Active Task/Application
+		- VMs consume more space and time to start any application/service.	
+	
+	
+	- Containers ::
+			
+		- Containers are called as OS Level Virtualization
+		- Containers are created using Container Engine
+		- Containers are used to run the Task/Application. Not Operating System
+		- Containers will immediately go to EXIT State if there is no Active Task/Application
+		- Containers consume less space and time to start any application/service.
+		- Containers runs in its own dedicated/isolated address space
+		
+		- Core of Operating System called Kernel :
+			- Namespace & Control Groups
+	
+		- Containers can be used to reduce the no.of VMs. But we cannot completely eliminate the VMs.
+		
+		
+	
+	
+	Working with Containers ::::
+	
+	
+	1. Infra-structure Perspectives ::
+	
+		Without using Containers :
+		
+			Jenkins_Master (VM)			==> To Create Jenkins CI/CD Pipeline Projects and schedule to the builds in the slave_nodes
+																	
+				Jenkins_SlaveNode1 (VM)	==> Perform Application Builds - Java Applications 
+				Jenkins_SlaveNode1.1 (VM)==> Perform Application Builds - Java Applications 
+				Jenkins_SlaveNode2 (VM)	==> Perform Application Builds - .Net Applications			
+				Jenkins_SlaveNode3 (VM)	==> Perform Application Builds - Python Applications 
+				Jenkins_SlaveNode4 (VM)	==> Perform Application Builds - Angular/NodeJS
+				Jenkins_SlaveNode5 (VM)	==> Perform Application Builds - Ruby 	
+			
+		Using Containers :
+
+			Jenkins_Master (VM)			==> To Create Jenkins CI/CD Pipeline Projects and schedule to the builds in the slave_nodes
+																	
+				Jenkins_SlaveNode1 (VM)	==> Build Server 
+					Install Container Engine 
+						C1 				==> Perform Application Builds - Java Applications   ==>
+						C2              ==> Perform Application Builds - .Net Applications	
+						C3              ==> Perform Application Builds - Python Applications 
+						C4              ==> Perform Application Builds - Angular/NodeJS
+						C5              ==> Perform Application Builds - Ruby 	
+						
+		Testing Environments :::
+		
+	
+	2. Developers'/Deployment Perspectives ::
+
+
+		- It is a process of packaging the application along with its dependencies.
+		
+		Dev Environment :
+		
+			- Create Source Code 	- Eclipe-IDE,github
+			
+			- Build, Create Artifacts(mywebapp.war)
+			- Unit Testing 			
+			- jdk17,tomcat8
+
+			- Promote the Changes to Higher Environments 
+			
+		Using Containerization :
+		
+			- Create Source Code 	- Eclipe-IDE,github
+			
+			- Build, Create Artifacts(mywebapp.war)
+			- Unit Testing 			
+
+			- Package the Application along with its dependencies (mywebapp.war,jdk17,tomcat8) ===> mywebapp-Image:v1.0
+			
+			- Publish the Application Image to Container Registry 						
+			
+		
+		QA :	(mywebapp.war)	==> jdk11,tomcat7
+		
+			Run the (mywebapp.war) ==> 
+			
+			Install Container Engine
+			
+			mywebapp-Image:v1.0(mywebapp.war,jdk17,tomcat8) will be pulled in to the QA Server using Container Engine and Create Application Containers
+			
+			
+		UAT :
+
+			Install Container Engine
+			
+			mywebapp-Image:v1.0(mywebapp.war,jdk17,tomcat8) will be pulled in to the QA Server using Container Engine and Create Application Containers
+			
+		
+		PROD :
+		 
+			Install Container Engine
+			
+			mywebapp-Image:v1.0(mywebapp.war,jdk17,tomcat8) will be pulled in to the QA Server using Container Engine and Create Application Containers
+			
+			
+	Terminologies/Architecture Components:
+	
+		- Container Engine :
+			- It is used to Create and Manage Container Images and Containers.
+			- Docker Container Engine 
+		
+			- AWS 	: ECS 
+			- AZure : ACS 
+			- GCP 	: GCE
+			
+		- Container Images :
+		
+			- It is a static file that defines properties of the Containers and its depedencies
+			- It is Non-Executable
+			- It composed of various layer of Instructions which are defined using Dockerfile.
+			
+		- Containers :
+		
+			- Containers are the executable units of Container Images. 
+			- Containers are using the run the Applications defined in the Container Images. 
+			- It is also called a process.
+	
+		- Container Registry :
+		
+			- It is used to save and manage the versions of Container Images.
+			- Dockerhub is Container Registry to be used.
+				https://hub.docker.com/	
+			
+			- AWS 	: ECS,ECR 
+			- Azure : ACS,ACR
+			- GCP 	: GCE,GCR		
+			
+		- Container Repositories :
+		
+			- Container Repositories are the sub-set of Container Registry 
+			
+			
+			- Github 				: Version Control the Source Codes 
+			
+			- Artifactory Libraries : Version Control the Application Artifacts 
+			
+			- Container Registries  : Version Control the Application/Container Images 
+			
+
+	- Create an Account/Login to DockerHub :  https://hub.docker.com/	
+			
+
+
+Next ::
+
+	- Install and work with Containers
+
+
+
+
+
+#########################
+Day 17 : 13th Sep. 2025
+#########################
+
+	- Install and work with Containers
+
+	- Installation of Container Engine :
+	
+		- Install Docker Engine 
+			# https://docs.docker.com/engine/install/
+			
+			- Launch Ubuntu Machine - v22.04  / Use the existing Jenkins SlaveNode to Install Docker Engine
+			
+			- sudo -i 
+			- apt update -y 			
+			- apt install docker.io -y
+
+
+	- Working with Docker Cli Commands :
+	
+		docker --version
+
+	- Working Docker Container Images
+	
+	- DockerHub - Container Registry ::::
+	
+	- Working with Docker CLI Commands :
+	
+
+		- docker --version
+		
+		- docker images					# To get the list of Containers Images present in Local Machine  
+		
+		- docker ps 					# To get the list of only the active/running Containers in Local Machine  
+		
+		- docker ps -a 					# To get the list all active/running/Inactive Containers in Local Machine
+
+		- docker pull <image_name>		# It is used to download the latest version of Container Image from Container Registry.
+
+			Eg.: 
+			
+				docker pull alpine
+				docker pull alpine:latest 
+				
+				docker pull ubuntu
+				
+				docker pull nginx 
+				
+				docker pull tomcat 
+			
+		- docker pull <image_name>:<Tag/Version_Name>	# To download a specific version of Container Image from Container Registry.
+	
+			Eg.: 
+			
+				docker pull alpine:3.22.0	
+		
+				docker pull tomcat:8.0
+	
+	
+		Create Containers using existing Container Images from Container Registry :
+
+			
+		- docker run <Container_Image_Name>		# Create a Container based on the Container Image
+		
+		Eg.: 
+		
+			docker run ubuntu 
+			
+			docker run alpine:latest	
+	
+
+		Three Modes of Container Executions/Run :::
+		
+			- Foreground/Attached Mode ::							# Default Mode of Execution.
+
+				docker run <image_name> 
+				
+				Eg.: 
+				
+					docker run ubuntu sleep 20 		
+			
+			
+			- Background/Detached Mode ::
+			
+				docker run -d <image_name> 
+				
+				Eg.: 
+				
+					docker run -d ubuntu sleep 20 		
+			
+			
+			- Interactive Mode :
+			
+				docker run -it <image_name> bash 
+				
+				exit 								# Exit from the Container 
+				
+				Eg.: 		
+		
+				 docker run -it ubuntu bash	
+				 
+				 exit 								# Exit from the Container 
+	
+	
+		- Start Container ::
+		
+			docker start <Container_ID> 			# Used to start the Container.
+
+
+		- Login to Running Container :
+		
+			docker exec -it <Container_ID> bash 
+			
+			Eg.:
+			docker exec -it 37b84fd0ecc8 bash
+			
+			exit 									# Log-off 
+			
+		- Stop Container ::
+		
+			docker stop <Container_ID> 				# Used to stop the Container.
+		
+		
+		- Kill Container ::
+		
+			docker kill <Container_ID> 				# Used to force stop the Container.
+
+
+		- Remove Container from Local Machine :
+		
+			docker rm <Container_ID>				# Permanently remove the Container
+			
+		
+		- Remove Container Image from Local Machine :
+		
+			docker rmi <Image_ID>					# Permanently remove the Container Image
+		
+			docker rmi -f <Image_ID>				# Force remove the Container Image	
+
+			
+		- Get the list of Active/running Container IDs :
+		
+			docker ps -q
+		
+		
+		- Stop/Kill all the Active/running Containers :
+		
+			docker stop $(docker ps -q)
+		
+			docker kill $(docker ps -q)	
+			
+			
+		Create a Container using name tag :
+		
+			docker run -it --name=dev_env <image_name> bash			
+
+
+	- Docker Networking ::::
+	
+		- Port Mapping / Port Binding 
+		
+		
+			docker run -it tomcat:8.0 bash		 
+		 
+			docker run -it -p 8088:8080 tomcat:8.0 	
+		 
+			-p <host_port>:<container_port>
+			
+	
+	- Docker Volumes :		# Used to maintain the persistant data.
+
+		- Storage! 
+		
+		
+		Dev Application :
+		
+			Web Application :
+			
+				3-Tier Application 
+				
+			
+			Micro-Service :
+			
+			Layers of 3-Tier Application Architecture :::
+			
+				- Front-End			-- User_Interface 	- C1 
+				
+				- Application 		-- Business Logic 	- C2 
+				
+				- Back-End 			-- DataBase 		- C3
+				
+		
+		
+		Stateless Application	:::
+		
+			- Application that will not have any trace of execution.
+		
+		
+		Stateful Application 	:::
+		
+			- Application that will have some trace of execution.
+			
+			
+			
+		docker volume list 
+
+		docker volume create <volume_name>
+		
+		docker volume create sa-vol1
+	
+		docker volume inspect sa-vol1
+		
+		docker run -it --mount source=sa-vol1,destination=/sa-vol1 ubuntu bash
+		
+	
+		
+	- Create Docker Images 
+	
+		- Docker Commit 
+		
+		- Docker Build 		
+	
+		
+	Create Container Images ::::
+	
+	
+		docker commit ::
+		
+			- To Create a New Container Image based on the properties of existing Container.
+			
+			Syntax :
+
+				docker commit <existing_container_id> <dockerhub_repo_name>/<New_Image_Name>:<tag_Name>
+				
+				
+			Eg.: 
+			
+				docker commit 878557cff16a loksaieta/sa-java-build-env:v1.0
+				
+				
+	Publish the Container Image to Container Registry - DockerHub :::
+	
+		- Use Docker CLI Commands to interact with DockerHub!
+		
+		- Create DockerHub Access Token :
+		
+			UserName :
+			
+				docker login -u loksaieta
+			
+			PAT 	 :	
+			
+				aasdfasdfasdfasdfasdfasdfsdf
+		
+		- docker push loksaieta/sa-java-build-env:v1.0
+		
+	
+
+		
+		Docker Build ::
+		
+			- To create a new Container Image based on the Dockerfile reference.
+			- Dockerfile composed of Instructions to Create Docker Container Images
+			- Application Developers create the Dockerfile and update in the Source Code Repository. 
+		
+		
+			vi Dockerfile 
+			
+			FROM ubuntu
+			RUN apt update -y 
+			RUN apt install git -y 
+			RUN apt install maven -y
+		
+		
+			Syntax :
+			
+				docker build -t <dockerhub_repo_name>/New_Image_Name>:<tag_Name> .		# '.' refers to the Dockerfile path	
+		
+			Eg.: 
+			
+				docker build -t loksaieta/sa-java-mvnbuild-env .
+
+
+		
+Next :
+
+	- Dockerfile Instructions
+	
+	- Prepare the Java maven web Application Image
+		
+	- Container orchestration 
+	
+		- Docker Compose 
+		- Docker Swarm 
+		
+		- Kubernetes 
+		
+	- Prepare Jenkins CICD Pipeline Projects using Docker	
+	
+	- Kubernetes :::::
+	
+
+
+
+#########################
+Day 18 : 14th Sep. 2025
+#########################
+
+	- Dockerfile Instructions
+
+
+			
+		Write Dockerfile :::
+		
+			Docker File Instructions :::
+			
+			FROM 									# To Identify the Base Image
+			RUN 									# To run the package manager
+			COPY 									# To Copy the file from host volume to container volume
+			CP 										# To Copy the file within the container volumes 
+			ADD 									# To Copy the file from Host Volume as well as from URL
+			ENV 									# To define the Environment Variable 
+			ARG 									# To pass Arguements to the Steps in Dockerfile 
+			EXPOSE									# To Define the Container Port 
+			WORKDIR									# To set the current working directory within the Container 
+			CMD										# To set the default start-up command to the container 
+													  This Command can be changed at run-time.
+			ENTRYPOINT								# To set the default start-up command to the container 
+													  This Command cannot be changed at run-time.			
+			
+
+	- Prepare the Java maven web Application Image :::
+
+			vi Dockerfile :::
+			
+			FROM tomcat:8.0
+			COPY ./target/*.war /usr/local/tomcat/webapps
+			EXPOSE 8080		
+					
+					
+			docker build -t loksaieta/mywebappimg .				# To Create Application Image using DockerFile
+			
+			docker run -it -p 8087:8080 loksaieta/mywebappimg	# To Create & Execute Application Container
+			
+			
+	- Container orchestration ::::
+
+
+			Micro-Service :
+			
+			Layers of 3-Tier Application Architecture :::
+			
+				- Front-End			-- User_Interface 	- C1 
+				
+				- Application 		-- Business Logic 	- C2 
+				
+				- Back-End 			-- DataBase 		- C3
+
+
+		
+	
+		- Docker Compose :::
+
+			- Is an extension/Plugin to Docker Engine.
+			- Is used to run multiple containers as a Service!
+			- Docker Compose uses the Yaml file to create the Service definitions
+		
+			Any Container that is part of a Service :
+		
+				should be in-sync with other container within the service 
+				
+				
+				Start/Stop all these container at the same time.
+		
+		
+		
+		Work with Docker Compose ::
+		
+			Install Docker_Compose
+			https://docs.docker.com/compose/
+			
+			https://docs.docker.com/compose/install/linux/
+			
+# Manual Installation of Docker Compose :::
+			
+DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+mkdir -p $DOCKER_CONFIG/cli-plugins
+curl -SL https://github.com/docker/compose/releases/download/v2.24.0/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+
+chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+	
+docker compose version
+
+vi docker-compose.yaml
+
+
+
+### Yaml Files are based on Keys & Values -- key:value Pairs
+
+version: '3'
+services:
+  webserv1:
+    image: "tomcat:8.0"
+    ports:
+      - 8098:8080
+  dbserv1:
+    image: "redis:alpine"
+	
+docker compose up 
+
+docker compose down 
+
+
+	- Docker Swarm ::::
+	
+		- Docker Swarm is one the Container Orchestration Tools.
+		- It is meant only for Docker Containers.
+		- Used to Ensure High Availability of Containers by creating Replicas of Containers.
+		
+		- We cannot do Auto-Scaling or Load Balancing!			
+
+		3-Tier Application Service :	
+				
+			User_SignIn Service :		
+				
+				Front-End			-->		c1.0,1.1,1.2		
+						
+				Application_Layer 	-->		c2.0,2.1,2.2			
+						
+				Database Layer 		-->		c3.0,3.1,3.2	
+
+				
+		Kubernetes ::::
+		
+			- It is a Open-Source Container Orchestration Tool 
+			- Kubernetes is used to Deploy any type of Containers.
+			- It is used to ensure high availability of the Applications/services running thru Containers.
+			- Used to Ensure High Availability of Containers by creating Replicas of Containers.
+			- It supports Auto-Scaling & Load Balancing.
+
+		Prod-Environment
+		
+			Production server1,2,3,4,5,6 	
+		
+		
+		
+	- Prepare Jenkins CI-CD Pipeline Projects using Docker ::
+	
+	
+	Pipeline Stages ::: 
+	
+	Create Jenkins CI Pipeline :	Using Docker
+	
+	
+		1. SCM-Checkout
+		
+		2. Application Build 			*.war 
+		
+		3. Application Image Build 
+		
+		4. Login to DockerHub 
+		
+		5. Push to DockerHub 
+	
+	Resources :
+
+			Servers :
+			
+				Jenkins_Master (VM)			==> To Create Jenkins CI/CD Pipeline Projects and schedule to the builds in the slave_nodes
+																		
+					Jenkins_SlaveNode1 (VM)	==> Perform Application Builds - Java Applications 
+
+
+			Tools :
+
+				Jenkins_Master (VM)			==> GIT,jdk,Jenkins
+																		
+					Jenkins_SlaveNode1 (VM)	==> GIT,jdk,maven,docker 
+					(Build_Server)
+					
+				
+			Other Dependencies ::
+			
+				Dockerhub access token
+				
+				Configure the Dockerhub access token in Jenkins using Jenkins Credential Manager
+
+
+pipeline {
+
+    agent { label 'slave1' }
+
+	environment {	
+		DOCKERHUB_CREDENTIALS=credentials('dockerloginid')
+	}
+	
+	
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM_Checkout'
+				git 'https://github.com/SA-WE-DevOps-Cloud-AI-1207/java-webapp-project.git'
+            }
+        }
+		
+        stage('Application_Build') {
+            steps {
+                echo 'Perform Application Build'
+				sh 'mvn clean package'
+            }
+        }
+		
+        stage('Docker_Image_Build') {
+            steps {
+                echo 'Perform Build Docker Application Image'
+				sh "docker build -t loksaieta/myappimg:${BUILD_NUMBER} ."
+				
+            }
+        }
+        stage('Login to DockerHub') {
+            steps {
+                echo 'Login to DockerHub'
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+				
+            }
+        }
+        stage('Push Application Image to DockerHub') {
+            steps {
+                echo 'Push Application Image to DockerHub'
+				sh "docker push loksaieta/myappimg:${BUILD_NUMBER}"
+				
+            }
+        }		
+		
+        stage('Deploy to Kubernetes') {
+            steps {
+                echo 'Deploy to Kubernetes'			
+				
+            }
+        }
+    }
+}
+	
+	
