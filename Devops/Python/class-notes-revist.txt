@@ -1,0 +1,167 @@
+#########################
+Day 23 : 11th Oct. 2025
+#########################		
+
+Fundamentals of Python scripting
+	Overview of Python
+	Features, Benefits, Uses of Python
+	Installation and Setup of Python Environment
+	Various Types of Sequences in Python
+	File Operations
+	Python Functions
+	OOPs Concepts
+	Modules
+	Errors and Exception Handling
+	Python Console based application and Web Application using Flask
+	Deploying and Consuming Python Applications
+	
+
+
+	Variables :
+	
+	Data Types 
+	
+	Arrays 
+	
+	List -> Json/Yaml file Management!
+	
+	
+	Working with Python!
+	
+	
+	Install Python in Local Machine!					# https://www.python.org/downloads/
+	
+	Use IDLE 
+	
+	Use Visual Studio Code for Programming!
+	
+		- Open VS Code 
+		
+			- Install Python Extension 
+			
+			
+			https://www.python.org/downloads/
+			
+			python --version 
+			
+			
+	Varibles 
+	
+	String 
+	
+	List 
+	
+	Tuple 
+	
+	Dictionary
+	
+	Operators
+	
+	Contditional Statements 
+	
+	For Loop Statements 
+	
+		file read/Write 
+		
+	
+	Web Application - Flask Web Application Framework
+	
+		- Flask	
+		
+		- Django 
+	
+	
+		asp.net 
+		
+		.Net Framework 
+		
+		
+		
+		Developers ==> Prepare the Python programs --> github 
+			
+			DevOps Scope :
+		
+		
+				 Code Quality Check using Sonarqube analysis 
+				 
+				 automate the Unit Testing 
+				 
+				 Automated Testing using Selenium-Grid
+				 
+				 Deployments
+			
+			
+	
+	Create Python console Programmes 
+	
+Create Web Application using Flask Web Application Framework
+	
+##################################
+
+Folder Structure :
+
+	My-WebApp-Project
+		app.py
+		templates
+			sample.html
+			
+##################################
+		
+		Open New Terminal :			
+			
+			Install : 	Web Application Framework
+				pip install flask
+		
+			Create app.py 
+		
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+
+def sample():
+	return render_template("sample.html")
+
+if "__name__" == "__main__":
+	app.run(debug=True)	
+	
+	
+		Create "templates" folder at root level :::
+				Create Html files :: eg. sample.html 
+				
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>www.loksaieta.com</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="jumbotron" style="background-color:white">
+	  <img src="https://octodex.github.com/images/spidertocat.png" alt="Spidertocat"
+		   class="img-responsive center-block" style="width:250px"/>
+	  <h2 class="text-center">Hello Everyone</h2>
+	  <p class="text-center"> Python Demo...</p>
+  </div>
+</body>
+</html>	
+
+
+		set FLASK_APP=sample
+	
+		python -m flask run	
+	
+	
+Next: 
+	
+DevOps Project ::::
+
+	Kubernetes Monitoring using Prometheus/Grafana!
+	
+	Use Case : Banking Domain!
+	
+	
+https://github.com/StarAgileDevOpsTraining/Certification_Projects_DevOps
+
+https://github.com/StarAgileDevOpsTraining/Certification_Projects_DevOps/blob/main/Banking%20and%20Finance%20Domain%20Project%20-%20FiananceMe.pdf
