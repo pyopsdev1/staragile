@@ -1,0 +1,373 @@
+
+
+#########################
+Day 24 : 12th Oct. 2025
+#########################	
+	
+
+	DevOps Project ::::
+
+		Kubernetes Monitoring using Prometheus/Grafana!
+		
+		Use Case : Banking Domain!
+		
+		
+	https://github.com/StarAgileDevOpsTraining/Certification_Projects_DevOps
+	https://github.com/StarAgileDevOpsTraining/Certification_Projects_DevOps/blob/main/Banking%20and%20Finance%20Domain%20Project%20-%20FiananceMe.pdf
+
+	
+	
+	Package Managers!
+	
+		- apt/dnf/yum ==> 
+		
+		- CMT - Ansible.
+		
+	Prod- Kubernetes Cluster:
+	
+		Kubernetes_Master
+		
+			Kubernetes_WorkerNode1-200
+			
+	Helm Package Manager is a Package Manager for Kubernetes!
+	
+		-> 
+		
+		
+	Managed Services :
+	
+		EKS/AKS/GKE 	==> GUI Based Console - Default Dashboard
+		
+		
+		Kubernetes Dashboard: ******
+		
+			Kubernetes Monitor Dashboard using Prometheus/Grafana
+			
+			
+		API Server --> 	User's Authentication!
+		
+						RBAC - Role Based Access Control 
+
+								- Namespace Level 
+							
+								- Cluster Level
+								
+								
+		Kubernetes Certification :::
+		
+			- Developer 
+			
+			- Admin 
+			
+			- Security Admin
+	
+			 
+	
+
+Use Case : Banking Domain :::::
+			
+
+- Prepare Jenkins CI-CD Pipeline Projects using Docker & Kubernetes ::
+	
+	
+	Pipeline Stages ::: 
+	
+	Create Jenkins CI Pipeline :	Using Docker & Kubernetes
+	
+	
+		1. SCM-Checkout
+		
+		2. Application Build 			*.war 
+		
+		3. Application Image Build 
+		
+		4. Login to DockerHub 
+		
+		5. Push to DockerHub 
+		
+		6. Deploy to Kubernetes
+		
+	
+	Resources : 
+	
+		Reuse if it is already available.
+		Else, Terraform to Create the below Servers 
+		
+		
+		Create AMI based on existing server and use it to create new servers. ****
+		
+
+			Servers :
+			
+				Jenkins_Master (VM)			==> To Create Jenkins CI/CD Pipeline Projects and schedule to the builds in the slave_nodes
+																		
+					Jenkins_SlaveNode1 (VM)	==> Perform Application Builds - Java Applications 
+					
+				Kubernetes_Master			==> Schedule the Deployments
+					Kubernetes_WorkerNode1
+					Kubernetes_WorkerNode2
+
+		
+		Create Ansile Playbooks to Configure the required tools in each server.
+		
+
+			Tools :
+
+				Jenkins_Master (VM)			==> GIT,jdk,Jenkins
+																		
+					Jenkins_SlaveNode1 (VM)	==> GIT,jdk,maven,docker 
+					(Build_Server)
+
+				Kubernetes_Master			==> Kubeadm,Kubectl,kubelet
+					Kubernetes_WorkerNode1
+					Kubernetes_WorkerNode2					
+				
+				
+			Other Dependencies ::
+			
+				Dockerhub access token
+				
+				Configure the Dockerhub access token in Jenkins using Jenkins Credential Manager
+				
+				Use SSH Connection between Jenkins and Kubernetes Master
+				
+					Create a user in Kubernetes Master 
+					Grant Access to Kubectl
+					Use Publish Over SSH Plugins to connect Kubernetes
+				
+				
+		
+# kdeploy.yaml		
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loksai-eta-deploy
+  labels:
+    app: loksai-eta-deploy-lbl
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: loksai-eta-app
+  template:
+    metadata:
+      labels:
+        app: loksai-eta-app
+    spec:
+      containers:
+      - name: loksai-eta-container
+        image: loksaieta/myappimg
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: loksai-eta-np-service
+  labels:
+    app: loksai-eta-app
+spec:
+  selector:
+    app: loksai-eta-deploy-lbl
+
+  type: NodePort
+  ports:
+  - nodePort: 31028
+    port: 8080
+    targetPort: 8080
+
+
+#
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bankingapp-deploy
+  labels:
+    app: bankingapp-deploy-lbl
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: banking-app
+  template:
+    metadata:
+      labels:
+        app: banking-app
+    spec:
+      containers:
+      - name: banking-app-container
+        image: loksaieta/bankingapp
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bankingapp-np-service
+  labels:
+    app: bankingapp-service-lbl
+spec:
+  selector:
+    app: bankingapp-deploy-lbl
+
+  type: NodePort
+  ports:
+  - nodePort: 31028
+    port: 8080
+    targetPort: 8080
+	
+	
+#	Jenkins CI Pipeline :	Using Docker & Kubernetes
+
+pipeline {
+
+    agent { label 'slave1' }
+
+	environment {	
+		DOCKERHUB_CREDENTIALS=credentials('dockerloginid')
+	}
+	
+	
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM_Checkout'
+				git 'https://github.com/SA-WE-DevOps-Cloud-AI-1207/java-webapp-project.git'
+            }
+        }
+		
+        stage('Application_Build') {
+            steps {
+                echo 'Perform Application Build'
+				sh 'mvn clean package'
+            }
+        }
+		
+        stage('Docker_Image_Build') {
+            steps {
+                echo 'Perform Build Docker Application Image'
+				sh "docker build -t loksaieta/myappimg ."
+				
+            }
+        }
+        stage('Login to DockerHub') {
+            steps {
+                echo 'Login to DockerHub'
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+				
+            }
+        }
+        stage('Push Application Image to DockerHub') {
+            steps {
+                echo 'Push Application Image to DockerHub'
+				sh "docker push loksaieta/myappimg"
+				
+            }
+        }		
+		
+        stage('Deploy to Kubernetes') {
+            steps {			
+				script {
+					sshPublisher(publishers: [sshPublisherDesc(configName: 'Kubernetes', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'kubectl apply -f kdeploy.yaml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '*.yaml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+				}
+            }
+        }
+    }
+}	
+
+
+
+GitOps ::::
+
+	Infra-structure Provisioning & Configurations ::::
+	
+	
+	Used to the Create and Configure resources dynamically!
+	
+	Terraform / Ansible to Create Resources using DevOps Pipelines(Jenkins/Bamboo/Az Pipelines/Github Actions)!
+	
+	
+Scenarios :::
+	
+	Scenario 1. 
+	
+		Pipeline 1:
+		
+			SCM_Checkout 	---> 	Application Build 		--->		Deploy to Target_Server
+		
+		
+	
+	Scenario 2 :	
+	
+		Pipeline 1:				
+			SCM_Checkout 	--->	Create a New_Target_Server(Terraform)		---> 	Configure New_Target_Server(Ansible)
+			
+			
+		Pipeline 2:		
+			SCM_Checkout 	---> 	Application Build 		--->		Deploy to New_Target_Server	
+			
+			
+	
+	
+	Scenario 3 : GitOps:		Repo1 -> Application_Source_Code & Infra-structure IAC (Terraform/Ansible Scripts)
+	
+		Pipeline 1:
+		Jenkins 
+		(Jenkins_SlaveNode - Build Server)
+		
+			SCM_Checkout -->	Application_Build --> Create a New_QA_Test_Server(Terraform) ---> Configure New_QA_Test_Server(Ansible)
+			
+																												|
+																												|
+																												|
+																												|
+																								
+																										Automate QA Testing
+																										
+																												|
+																												|
+																												|
+																												|
+																												
+																										 Notify the Users	--- Delete New_QA_Test_Server	
+	
+																												|
+																												|
+																												|(Success)
+																												|
+																												
+																										  Deploy to Prod
+	
+	
+ 
+	
+	
+		Azure DevOps Services - 
+		
+		Az cloud Service 
+		
+			ARM - Az Resource Manager 
+		
+		Az DevOps Services 
+		
+		Azure Pipeline 			--> Automate Application Builds & Deployments of (Java & .Net Applications)
+		
+			SCM-Checkout -->  Application_Build --> Create a New_QA_Test_Server
+		
+			(Build Server)							(Deployment Server)
+			
+			
+	
+	- Open-Source Devops Tools
+
+	- Azure Devops Services
+		- Azure Boards
+		- AzRepos
+		- AzPipelines/AzArtifacts/AzTest
+		
+	- GitHub 
+	
+	- Github Actions
+	
