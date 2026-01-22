@@ -1,0 +1,187 @@
+#########################
+Day 20 : 21st Sep. 2025
+#########################
+
+	Configuration Automation using Ansible :::
+	
+		Infra-Structure Management: 
+
+
+			- IAC - Infra-Structure As Code Tools ::
+				
+				- Terraform/CF/ARM
+				- Ansible/Chef/Puppet
+				
+				
+			- Server Provisioning/Creation 		--> Terraform/CF/ARM
+			
+			- Server Configuration - Configuration Management --> Ansible/Chef/Puppet  	
+
+
+
+	Overview of Configuration Automation :::
+	
+	Introduction to Ansible :::
+	
+	Ansible Architecture & its Components :::
+
+	Configuration Management System using Ansible :::
+	
+		- Install / Uninstall / Upgrade any Packages 
+			
+		
+	Working with Ansible :
+	
+	- Why we need Ansible ?
+	
+	- Ansible Architecture 
+		- Master & Client Architecture:
+		
+	- Ansible Components 
+		
+		- Ansible Controller 
+			- Install Ansible 
+			- Maintain the Ansible Modules and Inventory file 
+			
+		- Ansible Nodes :
+			- Target Machines/Clients that can be configured through Ansible Controller 
+			
+		Inventory file :
+			- Used to define the Ansible Nodes details
+			- Host Name, User Name and Credentials - SSH Keys / Password 
+			
+		Ansible Modules :
+			- It is a script or function that gets injected into the target machine.
+			- These Modules are based of Python Scripts 
+			- Ansible Inject/push the modules from the Ansible Controller Machine into the Ansible Nodes, perform the desired Task, and Once the Task is over, it will delete that module from that target machine. 
+			
+			Ansible_Controller 						Ansible_Node1 
+			
+				setup_Java_BuildServer.sh		==>	Copy setup_Java_BuildServer.sh and Execute this script in Ansible Node1
+					apt install git 
+					apt install jdk
+					apt install maven
+						
+						
+			- Ansible Use the Push Mechanism 
+			
+			
+		Ansible is Agentless.
+			
+			
+		- Ansible Config File :
+		
+			- Is used to define the default properties of Ansible 
+
+
+
+
+
+
+Next :::
+
+	Installation and Configuration of Ansible
+	Ansible ad-hoc commands
+	Ansible Playbooks
+	Ansible Variables
+	Ansible Handlers
+	Ansible Role using Ansible Galaxy
+
+
+#########################
+Day 20 : 21st Sep. 2025
+#########################
+
+	- Continue with Ansible 
+	
+	- Terraform
+	
+	- Installation and Configuration of Ansible ::
+	
+		Architecture :
+		
+			Ansible-Controller (VM)			
+				Ansible-Node1 (VM)
+				Ansible-NOde2 (VM)
+	
+	- Configure User profiles and access to Ansible Nodes 
+	
+	- Create Inventory File 
+	
+		Inventory file :
+			- Used to define the Ansible Nodes details
+			- Host Name, User Name and Credentials - SSH Keys / Password 	
+			
+			
+	- Interact with Ansible to Configure the Ansible Nodes :::
+	
+		- Ansible Adhoc Commands :
+		
+			- It is used to execute a module in the target machine.
+			
+				Eg.: 
+				
+				Target Server :
+				
+					install git :
+						- apt install git -y		
+						
+		- Ansible Playbooks :
+		
+			- Used to execute the series of task/Modules in the target machine.
+			- Ansible Playbooks should be reusable 
+			- Ansible Playbooks are written using *.yaml Scripts 
+			
+				Eg.: 
+					Target Server : 
+					
+						Setup the Jenkins Slave_Node :
+						
+							- apt install git -y 
+							- apt install jdk -y 
+							- apt install maven -y 
+							- apt install docker.io -y 
+							
+				Eg.: 
+
+					Tomcat Server :
+					
+							- install jdk 
+							- install tomcat 
+							- start tomcat service 
+		
+		
+		
+	
+	- Ansible Playbooks ::::
+	
+		Playbook Script 		
+	
+	- Handling Variables :::
+	
+	- Conditional Execution
+	
+	- Handlers 
+	
+	- Loops 
+	
+	- Ansible Roles / Galaxy :::
+	
+		Ansible Roles are used to organize the Ansible Components
+		To reuse & Share.
+
+		Ansible Repository ::
+
+		Understand the structure of Ansible Components ::::
+
+			playbooks, handlers, loop, variable, defaults, tasks,
+			
+		Default location for role : /etc/ansible/roles
+		
+		ansible-galaxy init <role_name>
+			
+			https://galaxy.ansible.com/ui/	
+
+
+
+	
