@@ -1,0 +1,1424 @@
+DCEIPB | SA2506031 
+
+Start Date : 12th July 2025
+
+Module 1 : AWS Cloud Platform :
+
+#######################
+Day 1 : 12th July 2025
+#######################
+
+	- Introduction to Cloud!
+	
+	- AWS Cloud Platform Services :
+	
+	- Access AWS Cloud :
+	
+	- AWS Operations :
+	
+		- Region 
+		
+		- Computing Environments 
+		
+		- IAM 
+		
+		- User and Resources 
+		
+		
+	https://aws.amazon.com/certification/?ams%23interactive-card-vertical%23pattern-data.filter=%257B%2522filters%2522%253A%255B%255D%257D
+	
+	https://d1.awsstatic.com/training-and-certification/docs/AWS_certification_paths.pdf
+	
+	
+	Access AWS Cloud ! 
+	
+		- Create AWS Free Tier Account !		# https://aws.amazon.com/console/
+		
+			==> Active Email_ID 
+			==> Active Mobile Number 
+			==> Active Credit/Debit Card - Enabled with International Transactions 
+			
+	Upon Creating an Account :
+
+	Login to AWS Console:
+	
+		- Email_ID 			# AWS root user ID.
+		
+		- Login as a root user.
+	
+			- EMail_ID 
+			- Password 
+			
+		- Create MFA - Multi-Factor Authentication 
+		
+			- Use Mobile Number with Google Authenticator App.
+			
+				- Soft Token to Authenticate. 
+	
+	Set the Region 
+	
+	Explore : AWS Services 
+	
+	Billing Dashboard! 
+	
+		- Just Terminate the Resources if it is no longer required.
+		
+		- Just Stop the Resources if it not in use.
+		
+		Virtual Machine --> EC2 Instance :
+		
+			1 VM -> 750 Hrs/Month			# For Free Tier Account 
+			
+			10 VMs -> 75 Hrs/Month 		
+			
+		Monitor the AWS Free Tier Resource Usage & Billing :
+		
+		AWS Billing Dashboard 
+		
+			- To Monitory AWS Resource Utilization and Payments.
+			
+			
+Next :
+
+	- IAM Service 
+	
+	- EC2 Service
+
+
+
+#######################
+Day 2 : 13th July 2025
+#######################
+
+	- IAM Service :::
+	
+		- User Authentication
+			- Defines Who can access the System/Service
+		
+		- User Authorization 
+			- What action the User can perform on that System/Service 
+			
+			
+	- IAM 	- Identity(Authentication)
+			- Access(Authorization)
+			- Management
+			
+			
+	-> Terminologies Used to manage the Users' Access ?
+	
+		User_Name 
+		Credentials :
+			- Password				AWS Console!
+			
+			- Access Token/Secrets
+			
+			- Secure Keys
+				- Public/Private Keys
+			
+			- Passwordless****
+			
+	-> RBAC - Role Based Access Control 
+	
+		-> Developers' Group 		==> Read access to a file.
+			- user1 
+			
+		-> Admin Group 				==> Manage(Read/Write/Delete) the File
+			- user1 
+			- user2 
+
+
+
+	- Create IAM User :
+	
+	- IAM Group 
+	
+	- Policies / Permission 
+	
+	- IAM Roles 
+	
+	- Manage IAM Users 
+	
+	
+	
+	- Install Visual Studio Code - IDE in local Machine		*******
+	
+		- Install JSON Extension / AWS Related Extensions.
+
+
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "Statement1",
+			"Effect": "Allow",
+			"Action": [],
+			"Resource": []
+		}
+	]
+}
+
+	Add Policies to the Users :
+	
+		- Through User Group 
+		
+		- Inline Policy 
+		
+	- Credential Reports :::
+	
+	- IAM Roles :::
+	
+	AKIAZzcvzxcvzxcvxcvY
+	
+	yPbdfxdfvxzcvHyZ0fev
+	
+
+	Various Modes of Accessing AWS :
+	
+		- AWS Console (Web browser)
+	
+		- AWS CLI 
+		
+		- AWS SDK 
+		
+		- Cloud Shell (Through Web Browser)
+			
+			- aws --version					# AWS Cli Command
+			
+			Use AWS Access Key and Secret Key.
+			
+			aws configure 
+			
+				C:\Users\Admin>aws configure
+				AWS Access Key ID [****************XDWV]: ASDFfSDFASDFASDFDFASDF**FAWEFACY
+				AWS Secret Access Key [****************KI5T]: yASDCASWE***DADSASDFSDAFDFSDFASDFSDFSDFv
+				Default region name [ap-south-1]:
+				Default output format [None]:
+			
+			aws iam get-user 
+			
+			aws iam get-user --user-name <devopsadmin1>
+			
+			
+			
+			
+	
+	Access AWS Resources using AWS Cli Commands:
+	
+		https://docs.aws.amazon.com/cli/v1/userguide/welcome-examples.html
+	
+		- Install AWS Client in the Local Machine(Windows/Mac/Linux).
+				https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+		
+		https://docs.aws.amazon.com/cli/v1/userguide/cli_iam_code_examples.html
+		
+		
+				
+		- Login to AWS Console as an IAM User 
+		
+		- Create Access & Secret Key 
+		
+		- Open Command Prompt 
+		
+			- aws --version 
+			
+			- aws configure 
+	
+			- aws iam get-user
+			
+				Exception :
+				An error occurred (AccessDenied) when calling the GetUser operation: User: arn:aws:iam::682033467551:user/testuser1 is not authorized to perform: iam:GetUser on resource: user testuser1 because no identity-based policy allows the iam:GetUser action
+				
+			- aws iam add-user-to-group --user-name testuser1 --group-name sagrp1
+			
+
+	
+	
+	- EC2 Service :::
+	
+		EC2 - Elastic Compute Cloud Instance ==> Virtual Machine 
+		
+		Core Objective!
+		
+			#!/bin/bash
+			yum update -y
+			yum install -y httpd
+			systemctl start httpd
+			systemctl enable httpd
+			echo "<h1>Hello, World!</h1>" > /var/www/html/index.html		
+		
+		
+	
+#######################
+Day 3 : 19th July 2025
+#######################	
+
+		
+	- EC2 Services!
+	
+		EC2 - Elastic Compute Cloud Instance ==> Virtual Machine 
+		
+		
+		
+		
+	
+	- Storage :
+	
+		- EBS 
+		
+		- EFS
+		
+		- S3
+
+	- EC2 Service :::
+	
+		EC2 - Elastic Compute Cloud Instance ==> Virtual Machine 
+		
+	
+	- Access EC2 Instances!
+	
+	
+		- Login to AWS Console 
+		
+		- Create EC2 Instance --> Linux - Ubuntu AMI v22.04 - Enabled with port 22.
+		
+		- Connect to EC2 Instance :
+		
+			- EC2 Instance Connect 			# Using Web Browser 
+			
+			- Using SSH Agents :			# Windows User  
+			
+				- MobaXterm 				# https://mobaxterm.mobatek.net/download-home-edition.html
+				- Putty 
+	
+			- Terminals :					# CMD Prompt/gitbash/Linux Teminal/Mac Terminal
+			
+					Open Terminal
+
+					Locate your private key file. The key used to launch this instance is aws2025-keypair1.pem
+
+					Run this command, if necessary, to ensure your key is not publicly viewable.
+					chmod 400 "aws2025-keypair1.pem"
+
+					Connect to your instance using its Public DNS:
+					ec2-13-235-75-90.ap-south-1.compute.amazonaws.com
+					
+					ssh -i "aws2025-keypair1.pem" ec2-user@ec2-13-235-75-90.ap-south-1.compute.amazonaws.com
+
+			
+		
+			SSH Connection to Remote Server :
+			
+				- Host Name 		# Public IP Address of EC2 Instance 
+				
+				- User Name			# Default User_Name : Ubuntu : ubuntu / Amazon Linux2 : ec2-user 
+				
+				- User Credentials 	# 
+				
+					Private Key ==> *.pem
+		
+		
+		Production Envionments :
+		
+			- Prod Servers 
+			
+				--> 1,2,3,4,5		==> Elastic IP 
+				
+				==> www.loksai.com ==> IP Address
+				
+				==> Load Balancers ==> 1 - IP => 
+				
+						1,2,3,4,5		==> Elastic IP 
+						
+					Kubernetes!
+						
+						
+	- Storage :
+	
+		- EBS Volumes ::: 
+		
+			Jenkins Servers (VM) == Periodic back-up of this server Volume ==> Snapshot. Template of EBS Volume 
+			
+			Build Servers 
+			
+			Kubernetes Cluster 
+		
+		Storage Administrator!
+			
+		
+		
+		- EFS :
+		
+			- Multi-AZs
+		
+		
+		- AMI ==> Amazon Machine Image!	Template of the EC2 Instance 
+		
+			- OS,Instance Type, 
+		
+		
+		
+		- Create a VM using default AMI 		
+		
+		- Install all the required tools/packages in that VM
+		
+		- Create a New AMI using this VM 
+		
+		- New AMI is ready 
+		
+		
+		-> Build Server/Environment used to build the Applications 
+		
+		
+			Within a region :
+			
+			--> VM1 -> Install all the required build tools 
+						-> git,maven,gradle,jdk,docker,sonarqube,
+						
+			--> VM2 -> Install all the required build tools 
+		               -> git,.Net-SDK,docker,sonarqube,
+					   
+					   
+			Create a AMI based on VM1 
+					   
+			Create a AMI based on VM2 
+		
+		
+			- Workflow :
+			
+				Test the VM created using custom AMI 
+				
+				
+			EBS Volume Encryption :
+			
+				Security --> 
+				
+					AWS - KMS
+					
+					During Snapshot!
+					
+					Encryption creates some latency!
+		
+Next :::		
+		- S3 :::
+				
+
+
+#######################
+Day 3 : 19th July 2025
+#######################	
+
+		
+	- EC2 Services!
+	
+		EC2 - Elastic Compute Cloud Instance ==> Virtual Machine 
+		
+		
+		
+		
+	
+	- Storage :
+	
+		- EBS 
+		
+		- EFS
+		
+		- S3
+
+	- EC2 Service :::
+	
+		EC2 - Elastic Compute Cloud Instance ==> Virtual Machine 
+		
+	
+	- Access EC2 Instances!
+	
+	
+		- Login to AWS Console 
+		
+		- Create EC2 Instance --> Linux - Ubuntu AMI v22.04 - Enabled with port 22.
+		
+		- Connect to EC2 Instance :
+		
+			- EC2 Instance Connect 			# Using Web Browser 
+			
+			- Using SSH Agents :			# Windows User  
+			
+				- MobaXterm 				# https://mobaxterm.mobatek.net/download-home-edition.html
+				- Putty 
+	
+			- Terminals :					# CMD Prompt/gitbash/Linux Teminal/Mac Terminal
+			
+					Open Terminal
+
+					Locate your private key file. The key used to launch this instance is aws2025-keypair1.pem
+
+					Run this command, if necessary, to ensure your key is not publicly viewable.
+					chmod 400 "aws2025-keypair1.pem"
+
+					Connect to your instance using its Public DNS:
+					ec2-13-235-75-90.ap-south-1.compute.amazonaws.com
+					
+					ssh -i "aws2025-keypair1.pem" ec2-user@ec2-13-235-75-90.ap-south-1.compute.amazonaws.com
+
+			
+		
+			SSH Connection to Remote Server :
+			
+				- Host Name 		# Public IP Address of EC2 Instance 
+				
+				- User Name			# Default User_Name : Ubuntu : ubuntu / Amazon Linux2 : ec2-user 
+				
+				- User Credentials 	# 
+				
+					Private Key ==> *.pem
+		
+		
+		Production Envionments :
+		
+			- Prod Servers 
+			
+				--> 1,2,3,4,5		==> Elastic IP 
+				
+				==> www.loksai.com ==> IP Address
+				
+				==> Load Balancers ==> 1 - IP => 
+				
+						1,2,3,4,5		==> Elastic IP 
+						
+					Kubernetes!
+						
+						
+	- Storage :
+	
+		- EBS Volumes ::: 
+		
+			Jenkins Servers (VM) == Periodic back-up of this server Volume ==> Snapshot. Template of EBS Volume 
+			
+			Build Servers 
+			
+			Kubernetes Cluster 
+		
+		Storage Administrator!
+			
+		
+		
+		- EFS :
+		
+			- Multi-AZs
+		
+		
+		- AMI ==> Amazon Machine Image!	Template of the EC2 Instance 
+		
+			- OS,Instance Type, 
+		
+		
+		
+		- Create a VM using default AMI 		
+		
+		- Install all the required tools/packages in that VM
+		
+		- Create a New AMI using this VM 
+		
+		- New AMI is ready 
+		
+		
+		-> Build Server/Environment used to build the Applications 
+		
+		
+			Within a region :
+			
+			--> VM1 -> Install all the required build tools 
+						-> git,maven,gradle,jdk,docker,sonarqube,
+						
+			--> VM2 -> Install all the required build tools 
+		               -> git,.Net-SDK,docker,sonarqube,
+					   
+					   
+			Create a AMI based on VM1 
+					   
+			Create a AMI based on VM2 
+		
+		
+			- Workflow :
+			
+				Test the VM created using custom AMI 
+				
+				
+			EBS Volume Encryption :
+			
+				Security --> 
+				
+					AWS - KMS
+					
+					During Snapshot!
+					
+					Encryption creates some latency!
+		
+
+	
+#######################
+Day 4 : 20th July 2025
+#######################
+	
+	- AWS S3 Service 
+	
+	
+		S3 Bucket is Name should be unique. 
+			Eg.: loksai-eta-2025-s3-bucket1
+	
+	https://loksai-eta-2025-s3-bucket1.s3.ap-south-1.amazonaws.com/index.html
+	
+	
+	https://awspolicygen.s3.amazonaws.com/policygen.html
+	
+	
+	https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html?icmpid=docs_amazons3_console
+	
+	
+	{
+	  "Version": "2012-10-17",
+	  "Statement": [
+		{
+		  "Sid": "Statement1",
+		  "Effect": "Allow",
+		  "Principal": "*",
+		  "Action": [
+			"s3:GetObject"
+		  ],
+		  "Resource": "arn:aws:s3:::loksai-eta-2025-s3-bucket1/*"
+		}
+	  ]
+	}
+	
+
+
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Principal":{
+            "AWS":[
+                 "arn:aws:iam::111122223333:user/JohnDoe,
+				 arn:aws:iam::1111222244444:user/Peter"
+         ]
+        },
+        "Effect": "Allow",
+        "Action": [
+            "s3:PutObject"
+        ],
+        "Resource": [
+            "arn:aws:s3:::amzn-s3-demo-bucket/*"
+        ],
+        "Condition": {
+            "StringEquals": {
+                "s3:RequestObjectTag/Department": "Finance"
+            }
+        }
+    }]
+}
+
+
+	S3 Object Versioning - to maintain the previous version.
+	
+	S3 Storage Class :::
+	
+		https://aws.amazon.com/s3/storage-classes/#topic-6
+	
+	https://loksai-eta-2025-s3-bucket1.s3.ap-south-1.amazonaws.com/index.html
+	
+	File System :
+	
+		- Batch Processing 
+		- Is Sequential by default 
+		- Key Sequential file 
+	
+	- AWS Database Service ::::
+	
+			https://aws.amazon.com/free/database/?p=ft&amp;z=subnav&amp;loc=3
+	
+		RDMS : 
+	
+			Database :
+				- Collection of Tables 
+					- Table is a collection of Rows and Columns.
+					- Used to maintain the relational data based on the application/domain.
+					
+	
+	
+	Students' Database :
+	
+	Stud_Primary_Table
+	
+	S_No		S_Name 		DOB				S_Contact_No	S_Email				S_Course_ID 
+	
+	101			xxxxxxxx	02/04/1999		3452345234		adfasd@asdf.com		C1001
+	102			xxxexx		05/12/2000		3452245234		adasd@asdf.com		C1002					
+	103			xxxexx		05/10/2001		3452145234		adfad@asdf.com		C1001	
+	104			xxasxexx	05/12/2001		3152145234		afad@asdf.com		C1006				
+
+	Course_Table :
+	
+	S_Course_ID 	S_Cource_Name		S_Cource_Duration		S_Cource_Fee	S_Cource_Eligibility
+	
+	C1001			xxxasdxxxxx			6						00000.00		xxxqqqqqqqq
+	C1002			xxxxxasdfsxxx		6						00000.00		xxxqqqqqqqq
+	C1003			xxadxxxasdfxxx		6						00000.00		xxxqqqqqqqq
+	C1004			xxxxxxxx			6						00000.00		xxxqqqqqqqq					
+	C1005			xxxxxxasdxx			6						00000.00		xxxqqqqqqqq					
+			
+	
+	
+	
+Next ::: 
+
+	
+	AWS Security : 
+	
+	VPC -> Own Private Network!
+	
+	VPC -> 
+
+	- Micro-Service based Application ==> Docker/Kubernetes Service
+	
+		- Kubernetes Architecture!
+			
+	: Projects! 	
+		- AWS Infra-Struture 
+		- Micro-Service based Application ==> Docker/Kubernetes Service 
+		
+	: FAQs
+		
+			
+	
+	
+			
+	
+#######################
+Day 5 : 2nd August 2025
+#######################		
+
+	VPC	- Virtual Private Cloud!
+			
+		- Networking 
+		- Security
+			
+	AWS Infra-Struture Architecture :
+	
+	
+#######################
+Day 6 : 23rd August 2025
+#######################		
+
+	VPC	- Virtual Private Cloud!
+			
+		- Networking 
+		- Security	
+	
+	- VPC Private Connectivity Options :
+	
+		- VPC Peering!
+
+	- Best Practises 
+	
+	- Design a Cost effective VPC Network
+	
+	- Troubleshooting process and Handling Erros and Logs
+	
+	- VPC Level Security 
+	
+	- Lab Practises	- using AWS Console! 
+	
+	- AWS CLi & IAC Tools like Cloud Formation & Terraform 
+	
+		- AWS Cloud Watch -> AWS Services 
+		
+			- Dynatrace 
+			- Prometheus 
+			- Grafana 
+	
+	
+SA-VPC-A		10.100.0.0/16
+
+SA-VPC-A-IGW
+
+SA-VPC-A-SN-Public	10.100.0.0/24
+
+SA-VPC-A-Public-RT
+
+SA-EC2-A
+
+
+
+SA-VPC-A-SN-Private
+
+SA-VPC-A-Private-RT
+
+SA-EC2-B
+
+
+
+Provisioning Infra-Struture using AWS Cli / IAC Tools :
+
+
+	- AWS Cli 
+	
+	- IAC Tools 
+	
+		- Cloud Formation 
+		
+		- Terraform 
+	
+	
+#######################
+Day 7 : 9th August 2025
+#######################	
+
+
+	- Isolated & Secured Network to Deploy the Applications  ==> VPC 
+
+
+	- Ensure High Availability of the Infra-Struture!
+	
+	- High Availability & Scalability!	
+	
+		- Load Balancers
+		
+		- Auto-Scaling Groups 
+		
+	- AWS 99.99% of resource Availability!
+	
+		https://aws.amazon.com/compute/sla/
+		
+		https://uptime.is/
+		
+		
+
+	Routing :::
+	
+	Load Balancer!
+
+
+	- Host Based Routing 	
+	
+	- Path Routing 
+	
+	- Query/Parameter Based Routing 
+	
+	
+	www.google.com 				URL - IP_Address - DNS	
+	
+		- www.maps.google.com 						Host Based Routing 
+		- www.mail.google.com 
+		- www.traslate.google.com 
+		- www.drive.google.com 
+
+
+	www.mail.google.com 
+	
+		inbox :	www.mail.google.com/inbox 			Path Based Routing 
+		
+		sent :	www.mail.google.com/sent 
+		
+		trash : www.mail.google.com/trash 
+		
+	
+	www.mail.google.com/inbox
+
+		Search inbox : Staragile.com
+
+	www.mail.google.com/inbox?mail=Staragile.com
+
+
+	- Connection Draining!
+	
+		- Deregister the Connectio from that node 
+		
+		- Identity the next available node for that transaction.
+		
+		- ANy New Request shd not routed to that node.
+	
+		- This happens between - 1 to 3600 seconds
+
+
+
+Next :::
+	
+	ALB Demo :
+	
+	Containerization using ECS/ECR/EKS 
+	
+	Monitoring 
+	
+	Queues / Notification services ...............
+
+	
+
+
+#######################
+Day 8 : 10th August 2025
+#######################	
+
+	ALB Demo :
+	
+	Containerization using ECS/ECR/EKS 
+	
+	Monitoring!
+	
+	
+	Monolith Application Architecture
+	
+	Micro-Service based Application Architecture
+	
+	
+	ALB ::::
+	
+	-> Load Balancer! 
+	
+	1. Configure Target Servers! - EC2 Instance!
+	
+		- 2 EC2 Instances - user data! Web Server! 
+		
+	2.  - Configure Security Group! to allow http ports - 80 
+	
+	3.  - Create Load Balancer 
+
+	4.  - Configure Security Group! to allow http ports - 80 
+	
+	5.  - Configure Target Group 
+			- Add the EC2 Instances to Target group.
+		
+		
+#!/bin/bash
+yum update -y
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+echo "<h1>Hello! You accessing web server - $(hostname -f)</h1>" > /var/www/html/index.html	
+
+$200 -> Azure/GCP == available for first month 
+
+$Digital Ocean!
+
+
+	- Containerization using ECS/ECR/EKS
+	
+	- Docker!
+	
+	- Container ?
+
+What is Containerization :::
+
+	- Process of packaging the Applications & its dependencies!
+	
+	- Monolith Application Architecture
+		- The Application Components are tightly coupled with each other!
+	
+	- Micro-Service based Application Architecture	
+		- It is loosely coupled Application Architecture
+		- Here, the Actual Application is splitted into Micro-Services
+		- Each and every Micro-Service can be independely developed, tested and released to production.
+		- This Architecture is used to achieve Continuous Deployment.
+		
+		- To Deploy the Micro-Service Based Application Services we use Docker Containers!
+		
+		
+	Infra-Struture:
+	
+		Non-Prod Envionments : 
+	
+			dev/qa/uat 
+		
+		Prod Envionments :
+		
+			Production Servers			
+				Target_Group
+					Server1,2,3,4,5,6,.................500~
+					
+					1VM --> 500 Containers!
+					
+				50 * 5000 services!
+
+		Open-Source Containerization Tools :
+		
+			- Docker 
+			
+			- DockerHub
+			
+			- Kubernetes 
+			
+		Managed Services :
+		
+			- AWS 		: ECS/ECR/EKS/Fargate(Serverless)	*****
+			
+			- Azure		: ACS/ACR/AKS 
+			
+			- GCP 		: GCE/GCR/GKE
+
+
+		Terminologies :
+		
+			- Container Engine :
+				- Tool used to create/Manage the Container Images and Containers!
+			
+			- Container Images :
+				- It is a static file used to define the properties and dependencies of application
+				- These are non-executable 
+				- It is composed of various layers of instruction created using Dockerfile.
+						
+			- Container :
+			
+				- Container is an executable entity of Container Image
+			
+			- Container Registry :
+				- Container Registry is used to Store/Manage the Container Images.
+				- DockerHub is a default Container Registry for Docker Container Engine.
+				https://hub.docker.com/
+				
+				
+			- Container Repository :				Public/Private 
+				- Sub-set of Container Registry 
+					- Dev Envi 	=> Dev_Repo
+					- QA Envi 	=> QA-Repo 
+					- UAT Envi 					
+					- Prod Envi					
+					- Application Type 
+					
+	Working with Containers!
+	
+		Developers' Role :
+
+			Dev Environment :
+
+				- Create an application:		(Java/C#/Python)			
+				- Application Build 
+					- It is a process to compile the source code and create application artifacts(Binaries - *.war/*.jar/*.dll/*.exec)
+					
+					--> mywebapp.war 
+						(jdk17)
+						
+				Containerization :::
+
+					- Process of packaging the Applications & its dependencies!		
+
+						Packge Application (mywebapp.war,jdk17,tomcat8)	=> mywebappimg:v1.0
+						
+						Publish the application image to Container Registry (DockerHub)
+						mywebappimg:v1.0
+						mywebappimg:v1.1
+						mywebappimg:v1.2
+						mywebappimg:v1.3
+					
+				- Unit Test 
+						(tomcat8)
+				
+				- Promote the artifacts to target server(QA/UAT/PROD)				
+				
+			QA Environment :	mywebappimg:v1.0
+			
+				- 	Pull/Download the Container Image
+				-	Create Container out of it for further execution.			
+			
+			UAT Environment :	mywebappimg:v1.0
+			
+				- 	Pull/Download the Container Image
+				-	Create Container out of it for further execution.			
+			
+			PROD Environment :	mywebappimg:v1.0
+			
+				- 	Pull/Download the Container Image
+				-	Create Container out of it for further execution.		
+		
+	Kubernetes :
+	
+		- Is Open-Source Container Orchestration Tool 
+		- It is used to ensure high availability of Containerized applications
+		
+		
+		Docker Containers :
+		
+			- Container Orchestration:
+			
+				- Docker Swarm! is not capable to handle the prod grade workload.
+				- We cannot achieve Auto-Scaling & Load Balancer using Docker Swarm.
+				
+				
+		3-Tier Application :		In Production Environment - Prod_Servers-1,2,3 
+		
+			- Front-End				# User Interface  
+			
+			- Application Layer 	# Business Logics 
+			
+			- Back-End 				# Database 
+		
+		
+		3-Tier Application :		In Production Environment - Prod_Servers-1,2,3 
+		
+			- Front-End				# User Interface  	- C1.1,1.2,1.3 				
+			- Application Layer 	# Business Logics 	- C2.1,2.2,2.3			
+			- Back-End 				# Database 			- C3.1,3.2,3.3  
+				
+	
+	- Containers are not a permanent Entity!
+	
+	- Stateful Application 
+	
+		- Persistant Volumes are used to maintain
+			the perssistant data throughout lifecyle of application
+			
+			
+			
+	Kubernetes :::
+	
+		- Kubernetes Architecture :::
+		
+		- Kubernetes Architecture components :::
+		
+			- API Server 
+			
+			- ETCD 
+			
+			- Scheduler 
+			
+			- Controller Manager 
+			
+			- Kubelet 
+			
+			- Kube-Proxy 
+			
+			- CRI - Container RunTime Interface (Container-D)
+			
+		
+		
+		- Terminologies :::
+		
+			- Container Images :
+				- It is a static file used to define the properties and dependencies of application
+				- These are non-executable 
+				- It is composed of various layers of instruction created using Dockerfile.
+						
+			- Container :
+			
+				- Container is an executable entity of Container Image
+			
+			- Container Registry :
+				- Container Registry is used to Store/Manage the Container Images.
+				- DockerHub is a default Container Registry for Docker Container Engine.
+				https://hub.docker.com/
+				
+				
+			- Container Repository :				Public/Private 
+				- Sub-set of Container Registry 
+
+			- Kubectl 		# It is Command Line Utility to interact with Kubernetes Master 
+			
+			- Kubernetes Cluster 
+							# Is a collection of Worker Nodes. 
+							
+			- Pod 			# Atomic Unit of Scheduling 
+			
+			
+		
+		Kubernetes_Master :::
+		
+			Kubernetes_Cluster1 :
+				Kubernetes_WorkerNode1
+				Kubernetes_WorkerNode2
+				Kubernetes_WorkerNode3
+			
+			
+		Kubernetes_Master :::										AWS cloud 
+		
+			Kubernetes_Cluster1 :									Region1
+				Kubernetes_WorkerNode1
+				Kubernetes_WorkerNode2
+				Kubernetes_WorkerNode3		
+		
+			Kubernetes_Cluster2 :									Region2 
+				Kubernetes_WorkerNode1
+				Kubernetes_WorkerNode2
+				Kubernetes_WorkerNode3			
+
+			Kubernetes_Cluster3 :									Region2 
+				Kubernetes_WorkerNode1
+				Kubernetes_WorkerNode2
+				Kubernetes_WorkerNode3		
+
+		Kubernetes_Master :::									On-Prem 
+		
+			Kubernetes_Master1 :::								AWS cloud 
+			
+				Kubernetes_Cluster1 :							Region1
+					Kubernetes_WorkerNode1
+					Kubernetes_WorkerNode2
+					Kubernetes_WorkerNode3		
+			
+				Kubernetes_Cluster2 :							Region2 
+					Kubernetes_WorkerNode1
+					Kubernetes_WorkerNode2
+					Kubernetes_WorkerNode3			
+
+				Kubernetes_Cluster3 :							Region2 
+					Kubernetes_WorkerNode1
+					Kubernetes_WorkerNode2
+					Kubernetes_WorkerNode3					
+
+			Kubernetes_Master2 :::								On-Prem
+			
+				Kubernetes_Cluster1 :							Region1
+					Kubernetes_WorkerNode1
+					Kubernetes_WorkerNode2
+					Kubernetes_WorkerNode3		
+			
+				Kubernetes_Cluster2 :							Region2 
+					Kubernetes_WorkerNode1
+					Kubernetes_WorkerNode2
+					Kubernetes_WorkerNode3			
+
+				Kubernetes_Cluster3 :							Region2 
+					Kubernetes_WorkerNode1
+					Kubernetes_WorkerNode2
+					Kubernetes_WorkerNode3	
+
+	
+
+########################
+Day 9 : 16th August 2025
+########################
+
+	ECS & EKS
+
+			- Controller Manager 
+			
+			
+	Kubernetes Services to ensure high-availability of Micro-Services.
+	
+		- It is Container Orchestration Tool 
+		- Kubernetes is used to Deploy any type of Containers.
+		- It is used to ensure high availability of the Applications/services running thru Containers.
+		- Used to Ensure High Availability of Containers by creating Replicas of Containers.
+		- It supports Auto-Scaling & Load Balancing.
+		- Self-Healing	
+
+		3-Tier Application :		In Production Environment - Prod_Servers-1,2,3 
+		
+			- Front-End				# User Interface  	- C1.1,1.2,1.3 				
+			- Application Layer 	# Business Logics 	- C2.1,2.2,2.3			
+			- Back-End 				# Database 			- C3.1,3.2,3.3  
+
+		- Replicas - 3 :
+		
+		- Kubernetes Pods!
+		
+			- Atomic unit of Task!
+			
+			- Front-End				# User Interface  	- Pod1.1,1.2,1.3 				
+			- Application Layer 	# Business Logics 	- Pod2.1,2.2,2.3			
+			- Back-End 				# Database 			- Pod3.1,3.2,3.3 			
+			
+		- Controller Manager :
+
+			- Deployment Controller :
+			
+			
+	Controller Object :::
+		ReplicaSet 
+		Deployment 
+
+
+	ReplicaSet :::
+	
+		--> Replicaset is used to execute the specific no. of pods in the cluster.
+		--> Replicaset uses the Set Based Operator
+		--> Used to replicate the pods and able to scale up/down
+		--> The Replicasets will be automatically created, while creating Deployment Controller Object.
+	
+	Deployment Controller Object :::
+	
+		--> It is used to deploy the pods and ensure high availability of pods by creating pod replicas 
+		--> 1. Create Muliple instance/replicas/copies of pods 
+			2. Used to Scale-Up / Scale-Down the Pods 
+			3. Used to Upgrade the application pods 
+			4. Used to Down-grade/roll-back the application pods
+		--> The upgrade/down-grade of application pods can be done without any downtime. 
+		--> To achieve zero-downtime during upgrade/down-grade, By Default, it used Rolling-Update Deployment Strategy.
+		
+
+
+	App Service :
+
+		Pod1.1,1.2,1.3
+		Pod2.1,2.2,2.3
+		Pod3.1,3.2,3.3
+		
+		
+	Web App : webappimg1.0				====>					webappimg1.1		
+	
+	
+	Replicas = 3 
+	
+	
+	Prod_Server1,2,3,4,5,6: mywebapp_SNAP_SHOT_V1.0.war			LIVE App 
+	
+	mywebapp_SNAP_SHOT_V2.0.war
+	
+	Prod_Server1,2,3,4,5,6: mywebapp_SNAP_SHOT_V2.0.war			LIVE App 
+	
+	
+	
+	
+	Web App : webappimg1.0				====>					webappimg1.1 (latest)	
+
+	Deployment Strategy: 
+	
+	Kubernetes Default Deployment Strategy ::: Rolling Update Strategy.
+		- Help to ensure 100% availability of application service!
+		- Time-consuming!
+	
+		- Canery Deployments 
+	
+		- Blue-Green Deployments
+	
+	
+	
+	During Upgrade of Service!
+	
+		pod1 webappimg1.0		--> 	webappimg1.1
+		
+		pod2 webappimg1.0		--> 	webappimg1.1
+		
+		pod3 webappimg1.0		--> 	webappimg1.1
+	
+	
+	
+
+	CloudFront - Edge Network!
+	Global Accelerators 
+	
+	CloudFront ==> Origin S3 ==> content
+	
+	- Edge Network - CloudFront
+	
+	
+	SNS 	-> Notification Service 
+	
+	SQS 	-> Queue Service 
+	
+		
+	AWS Route53 Services ==> DNS 	===> Paid Service!
+	
+	
+	
+	Serverless - Lambda Service!
+	
+	
+	Overall Application LifeCycle!  
+	
+	
+		- Tasks 
+		
+		- E-Commerce > www.Amazon.com 			AWS Clound - PROD - LIVE Envi.
+	
+			- Sign-up
+			
+			- Sign-in
+			
+			- search for products --> 10 seconds ==> 1M Users * 10 sec. ==> AWS 
+			
+			- add to cart 
+			
+			- make payment 
+					
+			- Order confirmation 
+			
+			- track the order 
+	
+	
+	
+	IAAS/PAAS/ ==> SAAS 
+	
+	
+Next :::
+
+	- Cloudwatch 
+	- Exam Tips 
+	- Best Practices 
+	
+	
+	
+#########################
+Day 10 : 17th August 2025
+#########################	
+	
+	- Cloudwatch ::
+
+		-> Continuous Monitoring!
+		
+		- Architecture 
+		
+			--> AWS Cloudwatch
+			
+			--> Azure Monitor
+			
+			--> Dynatrace/Splunk/DataDog/
+			
+			--> Prometheus/Grafana*****
+			
+			
+			--> Monitoring Server/Service 
+			
+					==> Monitoring DataBase(Time Series Data Base)
+					
+					==> Retrieval Component 
+			
+			--> Target Server/Service 
+			
+			
+	- AWS Security ::
+	
+		- Authentication :::
+		
+			- API Tokens :::
+			
+				-> Secrets!
+				
+				-> Secret Manager! 
+				
+					--> Key Vaults # To store the encrypted tokens/keys.
+
+							Secrets Token -
+
+
+
+-- Create an AWS Highly available and Secured Infra-Struture to deploy an application with DBase!
+  
+-- https://docs.aws.amazon.com/ 
+
+-- https://aws.amazon.com/architecture/well-architected/?achp_expl1
+
+-- https://aws.amazon.com/blogs/aws/aws-well-architected-framework-updated-white-papers-tools-and-best-practices/
+
+
+-- https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html
+		
+		
+-- https://aws.amazon.com/getting-started/onboarding-to-aws/
+		
+FAQs:
+		
+		DevOps 		==> ci/cd
+		
+		DevSecOps  	==> To implement shift-left approach as part of DevOps workflow
+		
+		
+		Dev --> QA --> UAT --> Prod
+		
+		java - jdk - Licensed/
+		source code 
+		
+		Quality Gates!
+		
+		
+		Security Audit! - IT Security Team.	
+	
+	
+	
+		
+			
