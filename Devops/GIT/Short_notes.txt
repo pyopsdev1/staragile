@@ -1,0 +1,532 @@
+Github
+ Continuous Development :::
+                  -->  What is Version Control System ???
+	                                      	- Is used to version control the source code changes and used to track the changes 
+Types of Version Control System :
+                            	- Local VCS ::             Single User to Version Control the changes in Local Machine.
+                              - Centralized VCS ::      Central Server is used to maintain the versions of Source Code & It is completely Online Process.
+		                          - Distributed VCS ::      Maintain Remote Servers to Version the Source Code Repositories.
+
+ what is GIT ? 
+        	- Is an Open-Source Distributed VCS , Is used to track the changes and used to perform parallel development using Branching techniques.
+
+	Working with GIT :::
+	
+                  	- Git File Workflow :::
+                  	- Git Branching Techniques :::
+                  	- Git Cli Commands :::
+                  	- Misc. Git Commands :::
+                  	- Remote Repositories :::
+
+Distributed Remote Repositories toll  - 	GITHUB , AWS CodeCommit , Azure Repos , BitBucket , gitlab 
+
+Install git in locatl machine 
+        Git client runs in local machine : - Used to create/manage local git repositories and Interact with remote github repositories.
+
+ Git File Workflow :::
+
+                                        	Local Machine:																			Remote Server(Github):
+                                        	
+                                        	Install git client 
+                                        	
+                                        	Working Directory 				Staging Area			      	Local Repository			              	Remote Repository
+                                        	
+                                        	
+                                        	index.html		 --------------> index.html ---------------> index.html_v1.0 --------------> index.html_v1.0
+                                        						          git add 				         git commit					            	git push
+                                        	index.html		 --------------> index.html ---------------> index.html_v1.1 --------------> index.html_v1.1
+                                        				          		git add 				         git commit					            	git push
+                                        	index.html		 --------------> index.html ---------------> index.html_v1.2 --------------> index.html_v1.2
+                                        				            		git add 				        git commit				          		git push
+                                        	index.html		 --------------> index.html ---------------> index.html_v1.3 --------------> index.html_v1.3
+                                        				            		git add 				         git commit						          git push
+                                        	index.html		 --------------> index.html ---------------> index.html_v1.4 --------------> index.html_v1.4
+                                        				          		git add 				           git commit					            	git push
+
+
+
+	GIT Cli Commands :::	
+	
+                      		git clone 					# To Copy/Clone the entire remote repository to local machine
+
+                        	git init  					# To initialize a local git repository
+							                            		# Create a .git directory & a default branch - master/main 
+		
+		                   git add 					# To add the changes from working directory to staging area 
+		
+		                      git commit 					# To commit the changes from staging area to local repository 
+		
+		                      git push 					# To Push the changes from local repository to remote repository
+		
+	                        git fetch/git pull :
+		
+			                                    # Both git fetch & git pull are used handle the incremental changes from remote repository.
+			
+			                    - git fetch :
+			                                  	- Is used to just check for the incremental changes in remote repository, if there is any changes exist, it will update the detail in the local repository. git fetch will never                                                 update the working directory.
+				
+				                                    - Explicit git pull/merge should be done to update the incremental changes inworking directory.
+				
+		                    	- git pull :
+			                                    	- Is used to check for the incremental changes in remote repository, if there is any changes exist, it will update the detail in the local repository as well as merge the                                                     changes in working directory.
+				
+				                                     - git pull = git fetch + git merge 
+				
+				                                      - It is always recommended to use git pull to keep the local repository in-sync with remote repository.	
+                            git status 					# To get the status of git repository - current branch 
+
+
+                            git log --oneline  
+
+                            git show <commit_id> 
+                         - git rm --cached <file_Name>			# Remove the changes just from the staging area. 
+		                  		- git rm -rf <file_Name>					# Remove the changes just from the staging area as well as from working directory. 														
+
+	                        	ls 				                    	# Linux Command to get the list of files & directories 
+		
+		                        git ls-files 		                # git cli Command to get the list of changes that are being tracked by git.
+
+                        	- git ignore :::                #  Is used ignore the files from tracking. .gitignore is a hidden file, used to maintain the file names/patterns to ignore from tracking. As a best practise,                                                                   .gitignore should be the very first commit in any repository.
+
+	                        	git reset  :::
+                                                          		git reset is used to undo the changes from the repository
+                                                          		git reset will reset the commit point to the previous commit point 
+                                                          		git reset will not create any new commit point for track purpose 
+                                                          		git reset is not recommended in the shared repository 
+
+                                  Reset Options ::
+
+                                        	                    		git reset --soft <previous_Commit_ID> :::
+                                                        				- git reset will reset the HEAD pointer to the previous commit point.
+                                                        				- It will take the changes back to staging area 
+                                                        				- The Changes will be available in staging area and working directory					
+                                                        		
+                                                        			git reset --mixed <previous_Commit_ID> :::		# Default
+                                                        				- git reset will reset the HEAD pointer to the previous commit point.
+                                                        				- It will take the changes back to working directory 
+                                                        				- The Changes will be available only in working directory			
+                                                        			
+                                                        			git reset --hard  <previous_Commit_ID> :::
+                                                        				- git reset will reset the HEAD pointer to the previous commit point.
+                                                        				- It will permanently delete the files from the system 
+                                                        		
+                        		git revert :::
+
+                                                              		- Git Revert is same as git reset --hard option 		
+                                                              		- git revert is used to undo a specific commit 		
+                                                              		- git revert will create a new commit point for tracking purpose.		
+                                                              		- git revert will maintain the commit history		
+                                                              		- git revert is recommended in shared repositories
+      		
+                                                                		Syntax ::
+                                                                			git revert <specific_Commit_ID>
+                           git commit :::                       # To Commit the changes from staging area to local repository
+                                                                  git commit --amend -m <New_Valid_Commit_Message>
+
+                		- git branch 							# to get the list of branches 
+                		
+                		- git branch <new_branch_name>			# Create new_branch
+                		
+                		- git switch -c <new_branch_name>		# Create new_branch & Switch to new_branch.
+                		
+                		- git switch <exiting_branch_name>		# Switch to a branch
+
+                        git merge         			# Merge command should be executed from target branch
+                                                    	Handle/Fix Merge Conflicts :
+                                                 	- How to fix Merge Conflicts ?
+                                                    		
+                                                    			- Identify the file(s) causing the merge conflicts
+                                                    			- Open the file and review the changes 
+                                                    			- Upon review, decide which changes to be retained/delete from that file(s).
+                                                    			- Update the file by removing the extra header/footer notes and contents.
+                                                    			- Perform git add and git commit to fix the issue.
+                    git rebase master              #         GIT Rebase : 
+                                                    
+                                                    		- Rebase is used to maintain linear commit history 
+                                                    		- Rebase is used to keep the current branch in-sync with target branch 
+                                                    		- Rebase can prevent merge-conflicts in the target branch 
+                                                    		- As a best practise, it is always recommended to use rebase before merge
+
+
+
+                    git merge --squash featur     #    to make a single commit
+
+
+
+                    GIT Stash :::                  #- Used to save the uncommited changes to temporary area. 
+
+ 
+                                                                                                        
+
+
+
+
+                                                                	
+			
+	                          	Fork 						# To take a backup of one remote repository to another.
+
+
+git Configuration :		
+		
+			- Global Configuration ==> It applicable to all the repositories.
+			
+				git config --global user.name "Loksai"			
+				git config --global user.email "loksai@adf.com"
+
+
+
+
+Senario 1
+
+1) Clone the remote repository to local repo and initialize git init  and create a file and add & commit to local repo and push to remote repo
+
+steps 
+
+        -->    git clone url<https://github.com/SA-WE-DevOps-Cloud-AI-1207/testremoterepo1.gi>
+        -->    mkdir sampleproj1
+        -->    cd sampleproj1/
+        -->    git init
+        -->    git status
+        -->    echo "rec1" >> f1.txt ( create a file )
+        -->    git ls-files
+        -->    git add f1.txt or git add .
+        -->    git commit -m "Create f1.txt"
+        -->    git status
+        -->    git log or git log --oneline -2
+        -->    git push -u origin master
+
+Senario 2
+
+1) Clone the remote repository to local repo and initialize git init  and create a file and add & commit to local repo and remove the committed file from local repo and working directory 
+
+        -->    git clone url<https://github.com/SA-WE-DevOps-Cloud-AI-1207/testremoterepo1.gi>
+        -->    mkdir sampleproj1
+        -->    cd sampleproj1/
+        -->    git init
+        -->    git status
+        -->    echo "rec1" >> f1.txt ( create a file )
+        -->    git ls-files
+        -->    git add f1.txt or git add .
+        -->    git commit -m "Create f1.txt"
+        -->    git status
+        -->    git log or git log --oneline -2
+        -->    git rm --cached f1.txt   # Remove the changes just from the staging area.
+        -->   git rm -rf --cached k1.t  # Remove the changes just from the staging area as well as from working directory.
+
+
+Senario 3
+
+3) Clone the remote repository to local repo and initialize git init  and create a file and add & commit to local repo and try soft,mixed,hard reset and revert  and update the existing commit message 
+
+
+  -->    git clone url<https://github.com/SA-WE-DevOps-Cloud-AI-1207/testremoterepo1.gi>
+        -->    mkdir sampleproj1
+        -->    cd sampleproj1/
+        -->    git init
+        -->    git status
+        -->    echo "rec1" >> f1.txt ( create a file )
+        -->    git ls-files
+        -->    git add f1.txt or git add .
+        -->    git commit -m "Create f1.txt"
+        -->    git status
+        -->    git log or git log --oneline -2
+        -->    git reset --soft 449f04d --< Commit ID        #   git reset will reset the HEAD pointer to the previous commit point and changes takes back on staging area
+        --.    git commit -m "CM5.1"
+        -->    git reset --mixed 449f04d --< Commit ID         #   git reset will reset the HEAD pointer to the previous commit point and changes takes back on working directory alone , not on sttagging area
+        -->    git add .
+        -->    git commit -m "CM5.2"
+        -->    git reset --hard 8c6b9e4                      #  git reset will reset the HEAD pointer to the previous commit point and It will permanently delete the files from the system and stagging area
+        -->   git commit -m "Initial Commit for .gitignore"    # change existing comit meesage on  local repo  
+        -->   git revert 7bb5fd0                              # Git Revert is same as git reset --hard option and undo a specific commit and create a new commit point for tracking purpose and git revert will maintain                                                                     the commit history	
+
+
+
+	- git branching techniques ::::
+	
+        GIT Branches :
+
+		- Branch is logical copy of any branch(default)
+		
+		- Used to perform parallel development using Branching techniques
+		
+		- default branch - (master/main) ==> Used to maintain the production version of source.
+		
+		- GIT Branches Strategies - are mainly used to maintain the integrity of the default - master/main branch
+			
+
+
+
+	Repo :
+	
+		master : cm1,cm2,cm3
+			
+			feature1 : cm1,cm2,cm3
+						cm1,cm2,cm3,f1cm1,f1cm2
+
+						
+- GIT Branching Strategies :::
+
+	- Scenario 1 :::
+	
+		Repo :
+		
+			master : cm1,cm2,cm3 			
+						cm1,cm2,cm3,f1cm1,f1cm2 			# Upon merging changes from feature1
+			
+				feature1: cm1,cm2,cm3
+							cm1,cm2,cm3,f1cm1,f1cm2 			
+
+        -->    git clone url<https://github.com/SA-WE-DevOps-Cloud-AI-1207/testremoterepo1.gi>
+        -->    git branch
+        -->    git branch feature1       
+        -->    git init
+        -->    git status
+        -->    echo "rec1" >>f1cm1( create a file )
+        -->    git ls-files
+        -->    git add f1.txt or git add .
+        -->    git commit -m "Create f1.txt"
+        -->    git status
+        -->    git log or git log --oneline -2
+        -->    git switch master
+        -->    git merge feature1
+        -->    git log --oneline
+
+
+		
+	- Scenario 2 :::
+	
+		Repo :
+		
+			master : cm1,cm2,cm3
+						
+						cm1,cm2,cm3,Developer_Branch_Changes 
+						
+				Developer_Branch : cm1,cm2,cm3
+				
+									cm1,cm2,cm3,f1cm1,f1cm2			# Upon merging changes from feature1
+									
+									cm1,cm2,cm3,f1cm1,f1cm2,f2cm1,f2cm2 	# Upon merging changes from feature1&2
+
+					feature1: cm1,cm2,cm3
+								cm1,cm2,cm3,f1cm1,f1cm2				
+					
+					feature2: cm1,cm2,cm3
+								cm1,cm2,cm3,f2cm1,f2cm2
+
+        -->    git clone url<https://github.com/SA-WE-DevOps-Cloud-AI-1207/testremoterepo1.gi>
+        -->    git branch
+        -->    git branch feature1       
+        -->    git branch feature2
+        -->    git init
+        -->    git status
+        -->    echo "rec1" >>f1cm1( create a file )
+        -->    git ls-files
+        -->    git add f1.txt or git add .
+        -->    git commit -m "Create f1.txt"
+        -->    git status
+        -->    git log or git log --oneline -2
+        -->    git switch master
+        -->    git merge feature1
+        -->    git log --oneline
+        -->   git switch feature2
+        -->   git switch master
+        -->   git merge feature2   #  file conflicts reports when we merege feature2 file to master , because we have changes already applied to master by feature1 , to fix the conflict issue , we have to edit the master
+        -->   vi f1.txt
+        -->   git add .
+        -->   git commit -m "Fixed Conflicts!"
+
+
+
+GIT Rebase : 
+
+		- Rebase is used to maintain linear commit history 
+		- Rebase is used to keep the current branch in-sync with target branch 
+		- Rebase can prevent merge-conflicts in the target branch 
+		- As a best practise, it is always recommended to use rebase before merge
+		
+		
+	Repo1 :
+	
+		master : cm1,cm2,cm3 
+					cm1,cm2,cm3,f1cm1,f1cm2							# Upon merging feature1 
+					
+					cm1,cm2,cm3,f2cm1,f2cm2,f1cm1,f1cm2				# Upon merging feature2 - without proper rebase
+					
+					cm1,cm2,cm3,f1cm1,f1cm2,f2cm1,f2cm2				# Expected Linear Commit History - with rebase
+		
+		
+			feature1 : cm1,cm2,cm3 
+			
+				cm1,cm2,cm3,f1cm1,f1cm2
+				
+				git switch master 
+				
+				git merge feature1 
+				
+			
+			feature2 : cm1,cm2,cm3 
+		
+				cm1,cm2,cm3,f2cm1,f2cm2
+				
+				
+				git rebase master 
+				
+				cm1,cm2,cm3,f1cm1,f1cm2,f2cm1,f2cm2
+				
+				git switch master 
+				
+				git merge feature2		
+
+
+
+
+        -->    git clone url<https://github.com/SA-WE-DevOps-Cloud-AI-1207/testremoterepo1.gi>
+        -->    git branch
+        -->    git branch feature1       
+        -->    git branch feature2
+        -->    git init
+        -->    git status
+        -->    echo "rec1" >>f1cm1( create a file )
+        -->    git ls-files
+        -->    git add f1.txt or git add .
+        -->    git commit -m "Create f1.txt"
+        -->    git status
+        -->    git log or git log --oneline -2
+        --.    git switch feature2
+        -->    git rebase master 
+        -->    git switch master
+        -->    git merge feature2
+        -->    git log --oneline
+
+
+
+GIT Squash :
+
+	- Used to combine more than one commits into single commit point.
+	
+	
+	- Repo :
+	
+		master: cm1,cm2 
+		
+				cm1,cm2,f1cm1,f1cm2,3,4,5,6,7,8,9,.....................,f1c100		# Upon merging feature1		
+				
+				cm1,cm2,cm3 							# Is the combined changes from feature1				
+				
+			feature1: cm1,cm2 
+			
+						cm1,cm2,f1cm1,f1cm2,3,4,5,6,7,8,9,.....................,f1c100
+	
+				git switch master 
+				
+				git merge feature1 
+				
+				git merge --squash feature1 
+				
+				git commit -m "Combined changes from feature1"			
+
+
+
+  -->  echo "rec1" >> e1.txt
+  -->  git add .
+  -->  git commit -m "f1cm1"
+  -->  echo "rec1" >> e2.txt
+  -->  git add .
+  -->  git commit -m "f1cm2"
+  -->  echo "rec1" >> e3.txt
+  -->  git add .
+  -->  git commit -m "f1cm3"
+  -->  echo "rec1" >> e4.txt
+  -->  git add .
+  -->  git commit -m "f1cm4"
+  -->  echo "rec1" >> e5.txt
+  -->  git add .
+  -->  git commit -m "f1cm5"
+  -->  clear
+  -->  git log --oneline
+  -->  ls
+  -->  git rebase master
+  -->  git switch master
+  -->  git log --oneline
+  -->  git merge --sqash feature1
+  -->  git merge --squash feature1
+  -->  git status
+  -->  git commit -m "Combined changes from feature1"
+  -->  git log --oneline
+
+
+GIT Stash :::
+
+	- Used to save the uncommited changes to temporary area.
+	
+	
+	
+	git stash save "save_message"	# Save an entry in stash list
+	
+	git stash list 					# Get the Stash list.
+	
+	git stash apply 				# To apply the latest entry from the stash list back to staging area. 	
+	git stash apply stash@{2}		# To apply a specific entry from the stash list back to staging area
+	
+	git stash drop 					# To delete the latest entry from the stash list.
+	git stash drop stash@{2}		# To delete a specific entry from the stash list.
+	
+	git stash pop 					
+									# To apply the latest entry from the stash list back to staging area as well as delete that latest entry from the stash list.								
+									
+	git stash pop stash@{1}	
+									# To apply a specific entry from the stash list back to staging area as well as delete that specific entry from the stash list.
+									
+	git stash clear 				# To clean-up the stash list 
+
+
+
+  -->  echo "rec1" >> s1.txt
+  -->  git add .
+  -->  git status
+  -->  git switch master
+  -->  git status
+  -->  git switch feature1
+  -->  git status
+  -->  git stash save "s1.txt"
+  -->  git stash list
+  -->  echo "rec1" >> q1.txt
+  -->  git add .
+  -->  git stash save "q1.txt"
+  -->  git stash apply
+  -->  git stash list
+  -->  git commit -m "created q6 q7"
+  903  git status
+  904  ls
+  -->  git stash drop
+  -->  git stash list
+  -->  git stash pop
+  -->  git stash list
+  -->  git status
+  -->    git stash apply stash@{2}
+  914  ls
+  915  git commit -m "q2"
+  916  git stash list
+  917  git stash drop stash@{2}
+  918  git stash list
+  919  git stash pop stash@{2}
+  920  git stash list
+  921  git commit -m "q1"
+  922  git stash clear
+  923  git stash list
+  924  clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
