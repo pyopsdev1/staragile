@@ -1,7 +1,7 @@
 Overview of DevOps :::
 
 - What is DevOps ?
-  DevOps is a Software Development Strategy, which promote collaboration between teams like Development Team and Operations Team to achieve Continuous Development, Continuous Interation, Continuous Testing, Continuous Delivery, Continuous Deployments and Continuous Monitoring in more automated fashion.
+ 				 DevOps is a Software Development Strategy, which promote collaboration between teams like Development Team and Operations Team to achieve Continuous Development, Continuous Interation, Continuous 						Testing, Continuous Delivery, Continuous Deployments and Continuous Monitoring in more automated fashion.
 
  	How to Implement DevOps ???
 	
@@ -22,11 +22,11 @@ Overview of DevOps :::
     
 	Environments :
 	-->		Non-Production Environments									Production Environments
-	-->   Development Environment
-	-->   Build Environment
-  -->   Test Environment
-			  QA (Qulity )
-				UAT (User Acceptance Testing Server)						===============>			Production Servers 
+	--> 	Development Environment
+	-->   	Build Environment
+  	-->   	Test Environment
+			QA (Qulity )
+			UAT (User Acceptance Testing Server)						===============>			Production Servers 
 
 
     Implementation types
@@ -89,10 +89,10 @@ Overview of DevOps :::
 		          		          	IAC Tools --> Infra-structure As Code. --> Declarative Languages - json/yaml
 			        	- Infra-structure Provision/Creation
                                   										- Terraform/CFT/ARM
-                                  					          - Jenkins 
+                                  					                    - Jenkins 
         			- Infra-structure Configuration 
                                       								- Ansible/Chef/Puppet
-                                      			        	- Jenkins 
+                                      			        	        - Jenkins 
                                       					
 				
 
