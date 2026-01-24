@@ -1,0 +1,113 @@
+Overview of DevOps :::
+
+- What is DevOps ?
+  DevOps is a Software Development Strategy, which promote collaboration between teams like Development Team and Operations Team to achieve Continuous Development, Continuous Interation, Continuous Testing, Continuous Delivery, Continuous Deployments and Continuous Monitoring in more automated fashion.
+
+ 	How to Implement DevOps ???
+	
+	Identify the Teams involved in the process :
+	
+		- DevOps Team 
+    
+        			- Infra-structure Management Team 
+                                                  ==> Create/Configure 50 Test Servers - Ansible/Terraform/CFT ( Ifra team is responsilble for resource allocation )
+        			- Application Development Team 
+                                                  --> Application Architectur(Monolith Application - tightly coupled Application Architecture, cannot split the module & funcation ) (  Micro-Service Based - lightly-                                                              coupled, Applications, each funcation consider as a sperate micro service ,Each Micro-Service can be independently developed and deployed and can be achieve                                                                   Continuous Deployment) 
+            	- Testing Team 
+        			- Release Management Team 
+        			- Production Support 
+        			- Production Monitoring 
+        			- IT Security Management Team 
+
+    
+	Environments :
+	-->		Non-Production Environments									Production Environments
+	-->   Development Environment
+	-->   Build Environment
+  -->   Test Environment
+			  QA (Qulity )
+				UAT (User Acceptance Testing Server)						===============>			Production Servers 
+
+
+    Implementation types
+
+    Waterfall Model :
+                      -->  It is Linear in approach and It was used for Monolith Application Architecture and It Strictly follows the Top-Down Approach.
+                        
+    AGILE Methodologies :
+                      --> We can achieve  Continuous Development,Continuous Interation , Continuous Testing, Continuous Delivery-production (Is used to perform production release, but it expects manual approvals.)
+                      --> We cannot achieve : Continuous Deployments - prod (Is used to perform production release without any manual approvals )
+
+
+	DevOps Stages :
+
+              Continuous Development : 
+                            -->   Developers Create Source Code & Save the Source Code in the Source Code Repositories (github/aws-code-commit/azRepos/Bitbuck) , no approval required
+              Using DevOps Process Automation : 
+                            -->  Automate Application Build ,  Automate Unit Testing , Automate Code Promotion , Automate Notifications (
+                                 tools like  
+                                          - IDEs - Integrated Development Environments - Eclipse/Visual Studio/Visual Studio Code/Pycharm
+			                                  	- Git/GitHub - distributed repo
+			                                  	- Build/Unit Testing Tools -> Maven/Junit/TestNG
+
+              Continuous Interation :
+                              -->   It is the capability of any Application Development Team to Continuously integrate their chages for further testing.
+              Using DevOps Process Automation :
+                              -->  Automate Application Build  ,  Automate Unit Testing ,  Automate Code Promotion , Automate Notifications
+                              	Tools Like :
+			                                      - IDEs - Integrated Development Environments - Eclipse/Visual Studio/Visual Studio Code/Pycharm
+				                                    - Git/GitHub
+				                                    - Build/Unit Testing Tools -> Maven/Junit/TestNG
+				                                    - Jenkins/AWS Code Piplines/Azure Pipelines
+
+            Continuous Testing :
+                            -->  It is the capability of Testing Team to Continuously test the changes without impacting other services. by Enables Automated Testing. Involves Test Data and Test Cases to be created by                                       the Developers and Testing Team
+                          Tools like :
+	                              	- JUnit/TestNG/Selenium
+				                          - Jenkins/AWS Code Piplines/Azure Pipelines
+
+          Continuous Delivery / Deployments :
+		              		- Continuous Delivery :			
+				                              -->   It expects manual interversion/approvals for production releases &  production downtime.
+							      - Continuous Deployments :
+				                            -->  Is used to perform production release without any manual approvals and  can be achieved only with Micro-Service based Application Architecture and Achieve Production                                                           implementation with out any Downtime(ZERO Downtime)			
+                              			Tools:
+                              				- Docker/Kubernetes/Terraform/Ansible
+                              				- Jenkins/AWS Code Piplines/Azure Pipelines		
+		
+           Continuous Monitoring :
+		                			-->  It is the process of Monitoring the Production Environments and Applications to ensure High Availability
+			
+			                - Infra-structure Monitoring
+								                            - Webhooks ( stalk , email notifications) 
+					          	                      - Monitoring Tools :	Prometheus/Grafana/Dynatrace/Splunk/Nagios/AWS CloudWatch/Azure Monitor 
+			                - Application Monitoring :
+			                            Tools Like - AppDynamics / Datadog 
+                              
+  
+				Infra-structure Management ::::
+		          		          	IAC Tools --> Infra-structure As Code. --> Declarative Languages - json/yaml
+			        	- Infra-structure Provision/Creation
+                                  										- Terraform/CFT/ARM
+                                  					          - Jenkins 
+        			- Infra-structure Configuration 
+                                      								- Ansible/Chef/Puppet
+                                      			        	- Jenkins 
+                                      					
+				
+
+
+                              
+	DevOps LifeCycle :
+	
+		CICD Process Automation :
+		
+		Developers ===> Create Source Code --> Build --> Test --> Deploy to Prod_Server --> Monitor
+			|																				|
+			|																				|
+			---------------------------------------------------------------------------------
+			
+			
+		Waterfall - AGILE - DevOps - DevSecOps - SRE - GitOps - AIOPs - MLOPs 
+		
+		
